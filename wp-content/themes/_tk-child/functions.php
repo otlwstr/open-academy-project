@@ -3,7 +3,8 @@
     /**
      * Autoload for PHP Composer
      */
-    //require "vendor/autoload.php";
+    if(!defined('ABSPATH')) define('ABSPATH', dirname(__FILE__) . '/');
+    require ABSPATH."vendor/autoload.php";
 
     /**
      * Here we are importing the Styles of the parent theme and re-using them
