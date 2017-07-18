@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="style.css" type="text/css" />
         <title> </title>
         <?php wp_head(); ?>
     </head>
     <body>
-        <?php require 'searchbox.php';?>
         <nav class="navbar navbar-default navbar-fixed-top"> <div class="container-fluid"> <div class="navbar-header"> <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a href="#" class="navbar-brand">Brand</a> </div> <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
         <?php /* Primary navigation */
             wp_nav_menu( array(
@@ -19,6 +17,7 @@
             );
         ?>
         </div> </div> </nav>
+        <?php require 'searchbox.php';?>
         <?php wp_footer(); ?>
     </body>
 </html>
