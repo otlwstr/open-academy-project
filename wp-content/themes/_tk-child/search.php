@@ -32,7 +32,7 @@
                        <?php while(have_posts()) {
                            the_post();
                         ?>
-                        <li><?php the_title(); ?></li>
+                        <li><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array( 'before' => 'Permalink to: ', 'after' => '' ) ); ?>"><?php the_title(); ?></a></li>
                        <?php } ?>
                        </ul>
                        <?php } else { ?>
