@@ -4,8 +4,7 @@
      * Autoload for PHP Composer
      */
     if(!defined('ABSPATH')) define('ABSPATH', dirname(__FILE__) . '/');
-    if(!defined('THEME_PATH')) define('THEME_PATH', ABSPATH . 'wp-content/themes/_tk-child/');
-    require ABSPATH ."vendor/autoload.php";
+    require ABSPATH."vendor/autoload.php";
 
     /**
      * Here we are importing the Styles of the parent theme and re-using them
@@ -13,12 +12,10 @@
      */
     add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
     function my_theme_enqueue_styles() {
-        wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+        wp_enqueue_style( 'parent-style', get_template_directory_uri() . '-child/assets/css/style.css' );
     
     }
 
-    /*Style inclusion*/
-    wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css',false,'1.1','all');
     /**
      * This is an example of usage for the Eloquent ORM
 
@@ -32,23 +29,121 @@
     /** 
      * Start your own functions here
      */
-     
-     add_filter( 'pre_get_posts', 'tgm_io_cpt_search' );
-/**
- * This function modifies the main WordPress query to include an array of 
- * post types instead of the default 'post' post type.
- *
- * @param object $query  The original query.
- * @return object $query The amended query.
- */
-function tgm_io_cpt_search( $query ) {
-	
-    if ( $query->is_search ) {
-	$query->set( 'post_type', array( 'post', 'movies', 'products', 'portfolio' ) );
+    require_once( get_template_directory() . '-child/assets/libs/custom-ajax-auth.php' );
+    
+    // Our custom post type function
+    function create_posttype() {
+    
+    	register_post_type( 'courses',
+    		array(
+    			'labels' => array(
+    				'name' => __( 'Courses' ),
+    				'singular_name' => __( 'Course' )
+    			),
+    			'public' => true,
+    			'has_archive' => true,
+    			'rewrite' => array('slug' => 'courses'),
+    		)
+    	);
+    }
+    // Hooking up our function to theme setup
+    add_action( 'init', 'create_posttype' );
+    
+    /*
+    * Creating a function to create our CPT
+    */
+    
+    function custom_post_type() {
+    
+    // Set UI labels for Custom Post Type
+    	$labels = array(
+    		'name'                => _x( 'Courses', 'Post Type General Name', 'breathecode-tk-child' ),
+    		'singular_name'       => _x( 'Course', 'Post Type Singular Name', 'breathecode-tk-child' ),
+    		'menu_name'           => __( 'Courses', 'breathecode-tk-child' ),
+    		'parent_item_colon'   => __( 'Parent Course', 'breathecode-tk-child' ),
+    		'all_items'           => __( 'All Courses', 'breathecode-tk-child' ),
+    		'view_item'           => __( 'View Course', 'breathecode-tk-child' ),
+    		'add_new_item'        => __( 'Add New Course', 'breathecode-tk-child' ),
+    		'add_new'             => __( 'Add New', 'breathecode-tk-child' ),
+    		'edit_item'           => __( 'Edit Course', 'breathecode-tk-child' ),
+    		'update_item'         => __( 'Update Course', 'breathecode-tk-child' ),
+    		'search_items'        => __( 'Search Course', 'breathecode-tk-child' ),
+    		'not_found'           => __( 'Not Found', 'breathecode-tk-child' ),
+    		'not_found_in_trash'  => __( 'Not found in Trash', 'breathecode-tk-child' ),
+    	);
+    	
+    // Set other options for Custom Post Type
+    	
+    	$args = array(
+    		'label'               => __( 'courses', 'breathecode-tk-child' ),
+    		'description'         => __( 'Course information', 'breathecode-tk-child' ),
+    		'labels'              => $labels,
+    		// Features this CPT supports in Post Editor
+    		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+    		// You can associate this CPT with a taxonomy or custom taxonomy. 
+    		'taxonomies'          => array( 'lessons' ),
+    		/* A hierarchical CPT is like Pages and can have
+    		* Parent and child items. A non-hierarchical CPT
+    		* is like Posts.
+    		*/	
+    		'hierarchical'        => false,
+    		'public'              => true,
+    		'show_ui'             => true,
+    		'show_in_menu'        => true,
+    		'show_in_nav_menus'   => true,
+    		'show_in_admin_bar'   => true,
+    		'menu_position'       => 5,
+    		'can_export'          => true,
+    		'has_archive'         => true,
+    		'exclude_from_search' => false,
+    		'publicly_queryable'  => true,
+    		'capability_type'     => 'page',
+    	);
+    	
+    	// Registering your Custom Post Type
+    	register_post_type( 'courses', $args );
+    
     }
     
-    return $query;
+    /* Hook into the 'init' action so that the function
+    * Containing our post type registration is not 
+    * unnecessarily executed. 
+    */
     
-}
+    add_action( 'init', 'custom_post_type', 0 );
+
+    //creating custom taxonomies for hotels custom post
      
+       //registration of taxonomies
+     
+    function my_taxonomies_course() {
+     
+        //labels array
+     
+    $labels = array(
+        'name'              => _x( 'Course Lessons', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Course Lesson', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Course Lessons' ),
+        'all_items'         => __( 'All Course Lessons' ),
+        'parent_item'       => __( 'Parent Course Lesson' ),
+        'parent_item_colon' => __( 'Parent Course Lesson:' ),
+        'edit_item'         => __( 'Edit Course Lesson' ),
+        'update_item'       => __( 'Update Course Lesson' ),
+        'add_new_item'      => __( 'Add New Course Lesson' ),
+        'new_item_name'     => __( 'New Course Lesson' ),
+        'menu_name'         => __( 'Course Lessons' ),
+      );
+     
+       //args array
+     
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+      );
+     
+      register_taxonomy( 'course_lesson', 'courses', $args );
+    }
+     
+    add_action( 'init', 'my_taxonomies_course', 0 );
+
 ?>

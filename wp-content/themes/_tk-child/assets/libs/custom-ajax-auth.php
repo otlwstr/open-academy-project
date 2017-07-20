@@ -1,12 +1,12 @@
 <?php
 function ajax_auth_init(){	
-	wp_register_style( 'ajax-auth-style', get_template_directory_uri() . '-child.1/assets/css/style.css' );
+	wp_register_style( 'ajax-auth-style', get_template_directory_uri() . '-child/assets/css/style.css' );
 	wp_enqueue_style('ajax-auth-style');
 	
-	wp_register_script('validate-script', get_template_directory_uri() . '-child.1/assets/js/jquery.validate.js', array('jquery') ); 
+	wp_register_script('validate-script', get_template_directory_uri() . '-child/assets/js/jquery.validate.js', array('jquery') ); 
     wp_enqueue_script('validate-script');
 
-    wp_register_script('ajax-auth-script', get_template_directory_uri() . '-child.1/assets/js/ajax-auth-script.js', array('jquery') ); 
+    wp_register_script('ajax-auth-script', get_template_directory_uri() . '-child/assets/js/ajax-auth-script.js', array('jquery') ); 
     wp_enqueue_script('ajax-auth-script');
 
     wp_localize_script( 'ajax-auth-script', 'ajax_auth_object', array( 
