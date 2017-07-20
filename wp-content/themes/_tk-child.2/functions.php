@@ -35,7 +35,6 @@
     function create_posttype() {
     
     	register_post_type( 'courses',
-    	// CPT Options
     		array(
     			'labels' => array(
     				'name' => __( 'Courses' ),
@@ -113,5 +112,38 @@
     
     add_action( 'init', 'custom_post_type', 0 );
 
+    //creating custom taxonomies for hotels custom post
+     
+       //registration of taxonomies
+     
+    function my_taxonomies_course() {
+     
+        //labels array
+     
+    $labels = array(
+        'name'              => _x( 'Course Lessons', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Course Lesson', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Course Lessons' ),
+        'all_items'         => __( 'All Course Lessons' ),
+        'parent_item'       => __( 'Parent Course Lesson' ),
+        'parent_item_colon' => __( 'Parent Course Lesson:' ),
+        'edit_item'         => __( 'Edit Course Lesson' ),
+        'update_item'       => __( 'Update Course Lesson' ),
+        'add_new_item'      => __( 'Add New Course Lesson' ),
+        'new_item_name'     => __( 'New Course Lesson' ),
+        'menu_name'         => __( 'Course Lessons' ),
+      );
+     
+       //args array
+     
+    $args = array(
+        'labels' => $labels,
+        'hierarchical' => true,
+      );
+     
+      register_taxonomy( 'course_lesson', 'courses', $args );
+    }
+     
+    add_action( 'init', 'my_taxonomies_course', 0 );
 
 ?>
