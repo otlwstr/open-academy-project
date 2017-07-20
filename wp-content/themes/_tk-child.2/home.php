@@ -1,30 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Open Academy Project</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Custom CSS -->
-    <link href="wp-content/themes/_tk-child.1/assets/css/simple-sidebar.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <?php wp_head(); ?>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+        <title>Open Academy Project</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="wp-content/themes/_tk-child.1/assets/css/simple-sidebar.css" rel="stylesheet">
+        <?php wp_head(); ?>
+    </head>
 
 <body>
 
@@ -37,6 +21,9 @@
                     <a href="#">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     </a>
+                </li>
+                <li>
+                    <?php get_search_form(); ?>
                 </li>
                 <li>
                     <a href="#">Dashboard</a>
@@ -84,7 +71,28 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-
+            <div class="wrapper">
+                <div class="container" id="home">
+                    <div class="row">
+                       <h2>Link 1</h2>
+                           
+                       <?php if(have_posts()){ ?>
+                       
+                       <ul>
+                       <?php while(have_posts()) {
+                           the_post();
+                        ?>
+                        <li><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute( array( 'before' => 'Permalink to: ', 'after' => '' ) ); ?>"><?php the_title(); ?></a></li>
+                       <?php } ?>
+                       </ul>
+                       <?php } else { ?>
+                       I'm sorry no results.
+                       <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
     <!-- /#wrapper -->
 
@@ -101,42 +109,7 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-
+<?php wp_footer(); ?>
 </body>
 
 </html>
-
-<!--
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Open Academy Project</title>
-        <?php wp_head(); ?>
-    </head>
-    <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="https://open-academy-project-marlont.c9users.io/" class="navbar-brand"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-                    <?php if (is_user_logged_in()) { ?>
-                        <a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
-                    <?php } else { get_template_part('ajax', 'auth'); ?>            	
-                        <a class="login_button" id="show_login" href="">Login</a>
-                        <a class="login_button" id="show_signup" href="">Signup</a>
-                    <?php } ?>
-                </div>
-            </div>
-        </nav>
-        <?php wp_footer(); ?>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    </body>
-</html>
--->
