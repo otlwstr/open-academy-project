@@ -36,7 +36,7 @@
                        <?php } ?>
                        </ul>
                        <?php } else { ?>
-                       I'm sorry no results.
+                       Sorry, no results.
                        <?php } ?>
                     </div>
                 </div>
