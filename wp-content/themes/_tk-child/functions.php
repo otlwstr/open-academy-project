@@ -10,11 +10,11 @@
      * Here we are importing the Styles of the parent theme and re-using them
      * for our own project, please don't edit this hook/function
      */
-    add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+    /*add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
     function my_theme_enqueue_styles() {
         wp_enqueue_style( 'parent-style', get_template_directory_uri() . '-child/assets/css/style.css' );
     
-    }
+    }*/
 
     /**
      * This is an example of usage for the Eloquent ORM
@@ -30,6 +30,20 @@
      * Start your own functions here
      */
     require_once( get_template_directory() . '-child/assets/libs/custom-ajax-auth.php' );
+    
+/* Theme setup */
+add_action( 'after_setup_theme', 'wpt_setup' );
+    if ( ! function_exists( 'wpt_setup' ) ):
+        function wpt_setup() {  
+            register_nav_menu( 'primary', __( 'Primary navigation', 'wptuts' ) );
+        } endif;
+
+    //require_once('/home/ubuntu/workspace/wp-content/themes/_tk-child/wp-bootstrap-navwalker-master/wp-bootstrap-navwalker.php');
+    
+    
+    
+    
+    
     
     // Our custom post type function
     function create_posttype() {

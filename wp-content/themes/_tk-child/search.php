@@ -10,7 +10,7 @@
         <div class="navbar navbar-inverse navbar-fixed-left">
           <a class="navbar-brand" href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
           <ul class="nav navbar-nav">
-           <?php require 'searchbox.php';?>
+           <?php get_search_form(); ?>
            <li><a href="#home"><i class="fa fa-home"></i><span> Link1 </span></a></li>
            <li><a href="#info"><i class="fa fa-info-circle"></i><span> Link2 </span></a></li>
            <li><a href="#love"><i class="fa fa-heart"></i><span> Link3 </span></a></li>
