@@ -126,4 +126,18 @@
         position: relative;
         margin-right: 0;
     }
+    
+    button, html input[type="button"], input[type="reset"], input[type="submit"]{
+            position: absolute;
+            top: 4px;
+            right: 1px;
+    }
+    
+    input[type="search"]{
+        width: 50%;
+    }
+    
+    form{
+        position: relative;
+    }
 }
