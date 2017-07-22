@@ -108,14 +108,35 @@ add_action( 'after_setup_theme', 'wpt_setup' );
     		'has_archive'         => true,
     		'exclude_from_search' => false,
     		'publicly_queryable'  => true,
-    		'capability_type'     => 'page',
+    		'capabilities'        => array(
+            	'edit_post' => 'edit_course',
+                'edit_posts' => 'edit_courses',
+                'edit_others_posts' => 'edit_other_courses',
+                'publish_posts' => 'publish_courses',
+                'read_post' => 'read_course',
+                'read_private_posts' => 'read_private_courses',
+                'delete_post' => 'delete_course'
+    		)
     	);
     	
     	// Registering your Custom Post Type
     	register_post_type( 'courses', $args );
-    
     }
     
+    function add_theme_caps() {
+        // gets the administrator role
+        $admins = get_role( 'teacher' );
+    
+        $admins->add_cap( 'edit_course' ); 
+        $admins->add_cap( 'edit_courses' ); 
+        $admins->add_cap( 'edit_other_courses' ); 
+        $admins->add_cap( 'publish_courses' ); 
+        $admins->add_cap( 'read_course' ); 
+        $admins->add_cap( 'read_private_courses' ); 
+        $admins->add_cap( 'delete_course' ); 
+    }
+    add_action( 'switch_theme', 'add_theme_caps');
+
     /* Hook into the 'init' action so that the function
     * Containing our post type registration is not 
     * unnecessarily executed. 
