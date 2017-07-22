@@ -133,7 +133,9 @@ add_action( 'after_setup_theme', 'wpt_setup' );
         $admins->add_cap( 'publish_courses' ); 
         $admins->add_cap( 'read_course' ); 
         $admins->add_cap( 'read_private_courses' ); 
-        $admins->add_cap( 'delete_course' ); 
+        $admins->add_cap( 'delete_course' );
+        $admins->add_cap( 'read' );
+        
     }
     add_action( 'switch_theme', 'add_theme_caps');
 
