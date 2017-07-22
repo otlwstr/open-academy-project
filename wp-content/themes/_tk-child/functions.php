@@ -42,9 +42,6 @@ add_action( 'after_setup_theme', 'wpt_setup' );
     
     
     
-    
-    
-    
     // Our custom post type function
     function create_posttype() {
     

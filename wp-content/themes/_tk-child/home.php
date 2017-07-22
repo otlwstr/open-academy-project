@@ -36,17 +36,12 @@
                           <a class="login_button" id="show_signup" href="">Signup</a>
                       <?php } ?>
                   </li>
-                  
-                  <?php /* Primary navigation */
-                    wp_nav_menu( array(
-                    'menu' => 'top_menu',
-                    'depth' => 2,
-                    'container' => false,
-                    'menu_class' => 'sidebar-brand',
-                    //Process nav menu using our custom nav walker
-                    'walker' => new wp_bootstrap_navwalker())
-                  );
-                  ?>
+                    <?php wp_nav_menu(array(
+                       'menu' => 'Main Menu', 
+                       'items_wrap'=>'%3$s', 
+                       'container' => false
+                    )); ?>
+
                   <!--li>
                       <a href="#">Overview</a>
                   </li>
