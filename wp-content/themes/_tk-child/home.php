@@ -25,9 +25,11 @@
                   <li>
                       <?php get_search_form(); ?>
                   </li>
-                  <li>
-                      <a href="#">Dashboard</a>
-                  </li>
+                    <?php wp_nav_menu(array(
+                       'menu' => 'Main Menu', 
+                       'items_wrap'=>'%3$s', 
+                       'container' => false
+                    )); ?>
                   <li>
                       <?php if (is_user_logged_in()) { ?>
                           <a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
@@ -36,12 +38,6 @@
                           <a class="login_button" id="show_signup" href="">Signup</a>
                       <?php } ?>
                   </li>
-                    <?php wp_nav_menu(array(
-                       'menu' => 'Main Menu', 
-                       'items_wrap'=>'%3$s', 
-                       'container' => false
-                    )); ?>
-
                   <!--li>
                       <a href="#">Overview</a>
                   </li>
