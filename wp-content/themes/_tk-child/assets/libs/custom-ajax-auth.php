@@ -1,6 +1,6 @@
 <?php
 function ajax_auth_init(){	
-	wp_register_style( 'ajax-auth-style', get_template_directory_uri() . '-child/assets/css/style.css' );
+	wp_register_style( 'ajax-auth-style', get_template_directory_uri() . '-child/style.css' );
 	wp_enqueue_style('ajax-auth-style');
 	
 	wp_register_script('validate-script', get_template_directory_uri() . '-child/assets/js/jquery.validate.js', array('jquery') ); 

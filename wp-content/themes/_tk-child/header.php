@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+        <title>Open Academy Project</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="/wp-content/themes/_tk-child/assets/css/simple-sidebar.css" rel="stylesheet">
+        <?php wp_head(); ?>
+    </head>
+
+<body>
+ <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+          <div id="sidebar-wrapper">
+              <ul class="sidebar-nav">
+                  <li class="sidebar-brand">
+                      <a href="#">
+                          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                      </a>
+                  </li>
+                  <li>
+                      <?php get_search_form(); ?>
+                  </li>
+                    <?php wp_nav_menu(array(
+                       'menu' => 'Main Menu', 
+                       'items_wrap'=>'%3$s', 
+                       'container' => false
+                    )); ?>
+                  <li>
+                      <?php if (is_user_logged_in()) { ?>
+                          <a href="<?php echo wp_logout_url( home_url() ); ?>">Logout</a>
+                      <?php } else { get_template_part('ajax', 'auth'); ?>            	
+                          <a class="login_button" id="show_login" href="">Login</a>
+                          <a class="login_button" id="show_signup" href="">Signup</a>
+                      <?php } ?>
+                  </li>
+                  <!--li>
+                      <a href="#">Overview</a>
+                  </li>
+                  <li>
+                      <a href="#">Events</a>
+                  </li>
+                  <li>
+                      <a href="#">About</a>
+                  </li>
+                  <li>
+                      <a href="#">Services</a>
+                  </li>
+                  <li>
+                      <a href="#">Contact</a>
+                  </li>
+                  <li>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                  </li-->
+              </ul>
+          </div>
