@@ -13,11 +13,11 @@ get_header(); ?>
  
     <div id="content" role="main">
  
-    <header> <?php the_title( '<h3>', '</h3>' ); ?> lessons</header>
+    <!-- <header>  <//?php the_title( '<h3>', '</h3>' ); ?> </header> -->
     
     <?php
     
-    $coursespost = array( 'post_type' => 'course', );
+    $coursespost = array( 'post_type' => 'courses', );
     $loop = new WP_Query( $coursespost );
     
     ?>

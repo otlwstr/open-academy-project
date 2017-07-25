@@ -13,29 +13,16 @@ get_header(); ?>
  
     <div id="content" role="main">
  
-    <header> <?php the_title( '<h3>', '</h3>' ); ?> </header>
+    <header> <?php the_title( '<h3>', '</h3>' ); ?>  </header>
     
     <?php
     
-    $coursespost = array( 'post_type' => 'courses', );
+    $coursespost = array( 'post_type' => 'lessons' , );
     $loop = new WP_Query( $coursespost );
     
     ?>
     <?php while ( $loop->have_posts() ) : $loop->the_post();?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="entry-content"><?php the_content(); ?></div>
-        </article>
- 
-    <?php endwhile; ?>
-
-    <?php
-    $lessonspost = array( 'post_type' => 'lessons', );
-    $loop = new WP_Query( $lessonspost );
-    
-    ?>
-    <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="entry-content"><h3><?php the_title(); ?></h3></div>
             <div class="entry-content"><?php the_content(); ?></div>
         </article>
  
