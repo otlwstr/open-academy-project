@@ -59,7 +59,7 @@
     /*
     * Creating a function to create our CPT
     */
-    
+    add_action( 'init', 'custom_post_type' );
     function custom_post_type() {
         // Set UI labels for Custom Post Type
         $labels = array(
@@ -104,7 +104,8 @@
                 'read_post' => 'read_course',
                 'read_private_posts' => 'read_private_courses',
                 'delete_post' => 'delete_course'
-            )
+            ),
+            'map_meta_cap'       => true
         );
         
         // Registering your Custom Post Type
@@ -145,7 +146,7 @@
     * Containing our post type registration is not 
     * unnecessarily executed. 
     */
-    add_action( 'init', 'custom_post_type', 0 );
+   // add_action( 'init', 'custom_post_type', 0 );
 
     //creation and registration custom taxonomies for lessons custom post
     function my_taxonomies_lessons() {
