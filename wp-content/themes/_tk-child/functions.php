@@ -38,24 +38,6 @@
             register_nav_menu( 'primary', __( 'Primary navigation', 'wptuts' ) );
         } endif;
 
-
-    // Our custom post type function
-    function create_posttype() {
-        register_post_type( 'courses',
-            array(
-                'labels' => array(
-                    'name' => __( 'Courses' ),
-                    'singular_name' => __( 'Course' )
-                ),
-                'public' => true,
-                'has_archive' => true,
-                'rewrite' => array('slug' => 'courses'),
-            )
-        );
-    }
-    // Hooking up our function to theme setup
-    add_action( 'init', 'create_posttype' );
-
     /*
     * Creating a function to create our CPT
     */
@@ -63,28 +45,27 @@
     function custom_post_type() {
         // Set UI labels for Custom Post Type
         $labels = array(
-            'name'                => _x( 'Courses', 'Post Type General Name', 'breathecode-tk-child' ),
-            'singular_name'       => _x( 'Course', 'Post Type Singular Name', 'breathecode-tk-child' ),
-            'menu_name'           => __( 'Courses', 'breathecode-tk-child' ),
-            'parent_item_colon'   => __( 'Parent Course', 'breathecode-tk-child' ),
-            'all_items'           => __( 'All Courses', 'breathecode-tk-child' ),
-            'view_item'           => __( 'View Course', 'breathecode-tk-child' ),
-            'add_new_item'        => __( 'Add New Course', 'breathecode-tk-child' ),
+            'name'                => _x( 'Lessons', 'Post Type General Name', 'breathecode-tk-child' ),
+            'singular_name'       => _x( 'Lesson', 'Post Type Singular Name', 'breathecode-tk-child' ),
+            'menu_name'           => __( 'Lessons', 'breathecode-tk-child' ),
+            'parent_item_colon'   => __( 'Parent Lesson', 'breathecode-tk-child' ),
+            'all_items'           => __( 'All Lessons', 'breathecode-tk-child' ),
+            'view_item'           => __( 'View Lesson', 'breathecode-tk-child' ),
+            'add_new_item'        => __( 'Add New Lesson', 'breathecode-tk-child' ),
             'add_new'             => __( 'Add New', 'breathecode-tk-child' ),
-            'edit_item'           => __( 'Edit Course', 'breathecode-tk-child' ),
-            'update_item'         => __( 'Update Course', 'breathecode-tk-child' ),
-            'search_items'        => __( 'Search Course', 'breathecode-tk-child' ),
+            'edit_item'           => __( 'Edit Lesson', 'breathecode-tk-child' ),
+            'update_item'         => __( 'Update Lesson', 'breathecode-tk-child' ),
+            'search_items'        => __( 'Search Lesson', 'breathecode-tk-child' ),
             'not_found'           => __( 'Not Found', 'breathecode-tk-child' ),
             'not_found_in_trash'  => __( 'Not found in Trash', 'breathecode-tk-child' ),
         );
         
         // Set other options for Custom Post Type
     	$args = array(
-            'label'               => __( 'courses', 'breathecode-tk-child' ),
-            'description'         => __( 'Course information', 'breathecode-tk-child' ),
+            'label'               => __( 'lessons', 'breathecode-tk-child' ),
+            'description'         => __( 'Lesson information', 'breathecode-tk-child' ),
             'labels'              => $labels,
             'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-            'taxonomies'          => array( 'lessons' ),
             'hierarchical'        => false,
             'public'              => true,
             'show_ui'             => true,
@@ -97,19 +78,19 @@
             'exclude_from_search' => false,
             'publicly_queryable'  => true,
             'capabilities'        => array(
-                'edit_post' => 'edit_course',
-                'edit_posts' => 'edit_courses',
-                'edit_others_posts' => 'edit_other_courses',
-                'publish_posts' => 'publish_courses',
-                'read_post' => 'read_course',
-                'read_private_posts' => 'read_private_courses',
-                'delete_post' => 'delete_course'
+                'edit_post' => 'edit_lesson',
+                'edit_posts' => 'edit_lessons',
+                'edit_others_posts' => 'edit_other_lessons',
+                'publish_posts' => 'publish_lessons',
+                'read_post' => 'read_lesson',
+                'read_private_posts' => 'read_private_lessons',
+                'delete_post' => 'delete_lesson'
             ),
             'map_meta_cap'       => true
         );
         
         // Registering your Custom Post Type
-        register_post_type( 'courses', $args );
+        register_post_type( 'lessons', $args );
     }
     
     function add_theme_caps() {
@@ -149,29 +130,31 @@
    // add_action( 'init', 'custom_post_type', 0 );
 
     //creation and registration custom taxonomies for lessons custom post
-    function my_taxonomies_lessons() {
+    function my_taxonomies_courses() {
         $labels = array(
-            'name'              => _x( 'Lessons', 'taxonomy general name' ),
-            'singular_name'     => _x( 'Lesson', 'taxonomy singular name' ),
-            'search_items'      => __( 'Search Lessons' ),
-            'all_items'         => __( 'All Lessons' ),
+            'name'              => _x( 'Courses', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Course', 'taxonomy singular name' ),
+            'search_items'      => __( 'Search Courses' ),
+            'all_items'         => __( 'All Courses' ),
             'parent_item'       => __( 'Parent Course' ),
             'parent_item_colon' => __( 'Parent Course:' ),
-            'edit_item'         => __( 'Edit Lesson' ),
-            'update_item'       => __( 'Update Lesson' ),
-            'add_new_item'      => __( 'Add New Lesson' ),
-            'new_item_name'     => __( 'New Lesson' ),
-            'menu_name'         => __( 'Lessons' ),
+            'edit_item'         => __( 'Edit Course' ),
+            'update_item'       => __( 'Update Course' ),
+            'add_new_item'      => __( 'Add New Course' ),
+            'new_item_name'     => __( 'New Course' ),
+            'menu_name'         => __( 'Courses' ),
         );
          
         $args = array(
             'labels' => $labels,
-            'hierarchical' => true,
+            'hierarchical'      => true,
+            'rewrite'           => array( 'slug' => 'course'),
+            'show_admin_column' => true
         );
          
-        register_taxonomy( 'lesson', 'courses', $args );
+        register_taxonomy( 'course', 'lessons', $args );
     }
     
-    add_action( 'init', 'my_taxonomies_lessons', 0 );
+    add_action( 'init', 'my_taxonomies_courses', 0 );
 
 ?>

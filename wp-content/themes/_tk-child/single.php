@@ -17,7 +17,7 @@ get_header(); ?>
     
     <?php
     
-    $coursespost = array( 'post_type' => 'lessons' , );
+    $coursespost = array( 'post_type' => 'courses' , );
     $loop = new WP_Query( $coursespost );
     
     ?>
