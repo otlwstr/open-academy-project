@@ -107,6 +107,7 @@
         $teacher->add_cap( 'edit_lesson' ); 
         $teacher->add_cap( 'edit_course' ); 
         $teacher->add_cap( 'manage_course' );
+        $teacher->add_cap( 'assign_course' );
         $teacher->add_cap( 'read' );
         
         // gets the student role
@@ -124,6 +125,7 @@
         $admins->add_cap( 'read_private_lesson' ); 
         $admins->add_cap( 'delete_lesson' );
         $admins->add_cap( 'manage_course' );
+        $admins->add_cap( 'assign_course' );
         $admins->add_cap( 'read' );
     }
     add_action( 'switch_theme', 'add_theme_caps');
