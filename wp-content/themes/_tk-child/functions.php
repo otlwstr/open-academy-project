@@ -93,16 +93,20 @@
         register_post_type( 'lessons', $args );
     }
     
+    
     function add_theme_caps() {
         // gets the teacher role
         $teacher = get_role( 'teacher' );
+        $teacher->add_cap( 'edit_lesson' ); 
+        $teacher->add_cap( 'edit_lessons' ); 
+        $teacher->add_cap( 'edit_other_lessons' ); 
+        $teacher->add_cap( 'publish_lessons' ); 
+        $teacher->add_cap( 'read_lesson' ); 
+        $teacher->add_cap( 'read_private_lesson' ); 
+        $teacher->add_cap( 'delete_lesson' );
+        $teacher->add_cap( 'edit_lesson' ); 
         $teacher->add_cap( 'edit_course' ); 
-        $teacher->add_cap( 'edit_courses' ); 
-        $teacher->add_cap( 'edit_other_courses' ); 
-        $teacher->add_cap( 'publish_courses' ); 
-        $teacher->add_cap( 'read_course' ); 
-        $teacher->add_cap( 'read_private_courses' ); 
-        $teacher->add_cap( 'delete_course' );
+        $teacher->add_cap( 'manage_course' );
         $teacher->add_cap( 'read' );
         
         // gets the student role
@@ -112,13 +116,14 @@
         
         // gets the administrator role
         $admins = get_role( 'administrator' );
-        $admins->add_cap( 'edit_course' ); 
-        $admins->add_cap( 'edit_courses' ); 
-        $admins->add_cap( 'edit_other_courses' ); 
-        $admins->add_cap( 'publish_courses' ); 
-        $admins->add_cap( 'read_course' ); 
-        $admins->add_cap( 'read_private_courses' ); 
-        $admins->add_cap( 'delete_course' );
+        $admins->add_cap( 'edit_lesson' ); 
+        $admins->add_cap( 'edit_lessons' ); 
+        $admins->add_cap( 'edit_other_lessons' ); 
+        $admins->add_cap( 'publish_lessons' ); 
+        $admins->add_cap( 'read_lesson' ); 
+        $admins->add_cap( 'read_private_lesson' ); 
+        $admins->add_cap( 'delete_lesson' );
+        $admins->add_cap( 'manage_course' );
         $admins->add_cap( 'read' );
     }
     add_action( 'switch_theme', 'add_theme_caps');
@@ -142,14 +147,20 @@
             'update_item'       => __( 'Update Course' ),
             'add_new_item'      => __( 'Add New Course' ),
             'new_item_name'     => __( 'New Course' ),
-            'menu_name'         => __( 'Courses' ),
+            'menu_name'         => __( 'Courses' )
         );
          
         $args = array(
             'labels' => $labels,
             'hierarchical'      => true,
             'rewrite'           => array( 'slug' => 'course'),
-            'show_admin_column' => true
+            'show_admin_column' => true,
+            'capabilities'      => array(
+                'manage_terms' => 'manage_course',
+                'edit_terms'   => 'edit_course',
+                'delete_terms' => 'delete_course',
+                'assign_terms' => 'assign_course',
+            )
         );
          
         register_taxonomy( 'course', 'lessons', $args );
