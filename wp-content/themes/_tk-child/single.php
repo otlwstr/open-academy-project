@@ -13,7 +13,7 @@ get_header(); ?>
  
     <div id="content" role="main">
  
-    <header> <?php the_title( '<h3>', '</h3>' ); ?> test2 </header>
+    <header> <?php the_title( '<h3>', '</h3>' ); ?> </header>
     
 
 

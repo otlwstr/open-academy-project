@@ -1,24 +1,25 @@
-<?php
-get_header(); ?>
+<?php get_header(); ?>
  
 <div id="primary">
  
     <div id="content" role="main">
  
-    <header> <?php the_title( '<h3>', '</h3>' ); ?> </header>
+        <header> <?php the_title( '<h3>', '</h3>' ); ?> </header>
     
-    <?php
+        <?php
+            $terms = get_terms( array(
+                'taxonomy' => 'course',
+                'hide_empty' => false,
+            ) );
+        ?>
     
-    $coursespost = array( 'post_type' => 'courses', );
-    $loop = new WP_Query( $coursespost );
-    
-    ?>
-    <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <div class="entry-content"><?php the_content(); ?></div>
-        </article>
- 
-    <?php endwhile; ?>
+        <ul>
+            <?php foreach ($terms as $t){ ?>
+                <li> 
+                    <?php echo '<a href="https://open-academy-project-marlont.c9users.io/course/'.$t->slug.'">'.$t->name.'</a><br>'; ?>
+                </li>
+            <?php } ?>
+        </ul>
     
     </div>
     
