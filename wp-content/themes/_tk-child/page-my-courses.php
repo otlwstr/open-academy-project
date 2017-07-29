@@ -11,6 +11,7 @@
                 'taxonomy' => 'course',
                 'hide_empty' => false,
             ) );
+            //print_r($terms);die();
         ?>
     
         <ul>
