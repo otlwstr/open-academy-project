@@ -10,7 +10,9 @@
  Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
  Text Domain:  breathecode-tk-child
 */
-
+#sidebar-wrapper{
+    top: 0;
+}
 form.ajax-auth{
     display: none;
     z-index: 999;

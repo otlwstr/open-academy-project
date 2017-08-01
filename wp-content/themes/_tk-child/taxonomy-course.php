@@ -14,7 +14,7 @@
             ),
         ),
      );
-
+    echo term_description( $t->term_id, 'course' );
      $loop = new WP_Query($args);
     // print_r($loop); die();
      if($loop->have_posts()) {

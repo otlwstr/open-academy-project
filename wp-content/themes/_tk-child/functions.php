@@ -157,6 +157,7 @@
             'hierarchical'      => true,
             'rewrite'           => array( 'slug' => 'course'),
             'show_admin_column' => true,
+            'public'            => true,
             'capabilities'      => array(
                 'manage_terms' => 'manage_course',
                 'edit_terms'   => 'edit_course',
@@ -169,5 +170,24 @@
     }
     
     add_action( 'init', 'my_taxonomies_courses', 0 );
+    
+    function mytheme_pre_get_posts( $query ) {
+    if ( !is_admin() && $query->is_search() && $query->is_main_query() ) {
+        //$term = get_term_by('name', get_query_var('s'), 'course');
+        //if ($term) {
+            /*$query->set( 'tax_query', array(
+                 array(
+                    'taxonomy' => 'course',
+                    'field'    => 'slug',
+                    'terms'    =>  $term->slug,
+                    'operator' => 'AND'
+                )
+            ));*/
+            $query->set( 'taxonomy', 'course');
+         //}
+    }
+}
+add_action( 'pre_get_posts', 'mytheme_pre_get_posts', 1 );
 
 ?>
+

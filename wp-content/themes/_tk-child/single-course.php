@@ -25,11 +25,13 @@ get_header(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <div class="entry-content"><?php the_content(); ?></div>
         </article>
+        <?php echo term_description( $t->term_id, 'course' ) ?>
  
     <?php endwhile; ?>
     
     </div>
     
 </div>
+
  
 <?php get_footer(); ?>

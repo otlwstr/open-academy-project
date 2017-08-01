@@ -17,7 +17,7 @@
         <ul>
             <?php foreach ($terms as $t){ ?>
                 <li> 
-                    <?php echo '<a href="https://open-academy-project-marlont.c9users.io/course/'.$t->slug.'">'.$t->name.'</a><br>'; ?>
+                    <?php echo '<a href="'.get_term_link($t->term_id).'">'.$t->name.'</a><br>'; ?>
                 </li>
             <?php } ?>
         </ul>
