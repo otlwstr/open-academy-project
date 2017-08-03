@@ -1,7 +1,7 @@
             <?php get_header(); ?>
                 <div class="container" id="home">
                     <div class="row">
-                       <h2>Link 1</h2>
+                       <h2>Search results...</h2>
                            
                        <?php if(have_posts()){ ?>
                        
