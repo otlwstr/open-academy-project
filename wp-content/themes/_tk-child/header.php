@@ -42,23 +42,5 @@
                           <a class="login_button" id="show_signup" href="">Signup</a>
                       <?php } ?>
                   </li>
-                  <!--li>
-                      <a href="#">Overview</a>
-                  </li>
-                  <li>
-                      <a href="#">Events</a>
-                  </li>
-                  <li>
-                      <a href="#">About</a>
-                  </li>
-                  <li>
-                      <a href="#">Services</a>
-                  </li>
-                  <li>
-                      <a href="#">Contact</a>
-                  </li>
-                  <li>
-                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                  </li-->
               </ul>
           </div>
