@@ -22,6 +22,7 @@
                           <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                       </a>
                   </li>
+                  <?php if (is_user_logged_in()) { ?>
                   <li>
                       <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
                         <div>
@@ -29,6 +30,7 @@
                         </div>
                     </form>
                   </li>
+                  <?php } ?>
                     <?php wp_nav_menu(array(
                        'menu' => 'Main Menu', 
                        'items_wrap'=>'%3$s', 
