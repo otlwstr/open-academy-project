@@ -32,7 +32,7 @@
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    box-shadow: 5px 5px 10px #888888;
+    box-shadow: 5px 1px 30px #888888;
 }
 
 #wrapper.toggled #sidebar-wrapper {
