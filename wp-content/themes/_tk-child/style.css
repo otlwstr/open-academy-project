@@ -115,18 +115,20 @@ form.ajax-auth{
 }
 
 .ajax-auth input.submit_button{
-    font-size: 13px;
+    font-size: 10px;
     color: #FFF;
     border: 1px solid #b34336;
     background-color: #e25c4c;
     border-radius: 3px;
     text-shadow: 0 1px 0 #ba3f31;
-    padding: 9px 31px 9px 31px;
+    /*padding: 9px 31px 9px 31px;*/
     background: -moz-linear-gradient(top, #ea6656, #df5949);
     border-top: 1px solid #bb483a;
     border-bottom: 1px solid #a63b2e;
     float: right;
     box-shadow: 0 1px 0 #E87A6E inset;
+    width: 60px;
+    height: 40px;
 }
 
 .ajax-auth a{
