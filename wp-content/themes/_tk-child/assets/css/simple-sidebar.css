@@ -140,8 +140,8 @@
     }
     
     
-    .toggled{
-        background-color: blue;
+    body{
+        background-color: bl;
         overflow: auto;
         color:white;
     }
