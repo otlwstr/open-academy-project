@@ -11,6 +11,10 @@
  Text Domain:  breathecode-tk-child
 */
 
+body{
+    background-image: url('backgrounds.jpg');
+}
+
 #s{
 width:150px;
 background: white;
@@ -25,7 +29,7 @@ width: 110px;
 #sidebar-wrapper{
     top: 0;
     width: 150px !important;
-    position: fixed;
+ 
 }
 form.ajax-auth{
     display: none;
