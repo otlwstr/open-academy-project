@@ -36,9 +36,9 @@ form.ajax-auth{
     display: none;
     z-index: 999;
     position: fixed;
-    top: 150px;
+    top: 10px;
     left: 50%;
-    width: 350px;
+    width: 400px;
     margin-left: -200px;
     padding: 40px 25px 25px 25px;
     background-color: #FFFFFF;
@@ -134,7 +134,7 @@ form.ajax-auth{
 }
 
 .ajax-auth a.close{
-    color: #DCDCDC;
+    color: #000000;
     position: absolute;
     right: 15px;
     top: 15px;
@@ -153,6 +153,7 @@ form.ajax-auth{
     display: none;
 }
 
+/*
 .login_overlay{
     height: 100%;
     width: 100%;
@@ -161,3 +162,4 @@ form.ajax-auth{
     position: fixed;
     z-index: 998;
 }
+*/

@@ -126,7 +126,7 @@
     }
     
     button, html input[type="button"], input[type="reset"], input[type="submit"]{
-            position: absolute;
+            position: relative;
             top: 4px;
             right: 1px;
     }
