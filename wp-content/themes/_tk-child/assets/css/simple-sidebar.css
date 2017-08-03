@@ -4,9 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
- body {
-    overflow-x: hidden;
- }
+
 
 /* Toggle Styles */
 
@@ -29,12 +27,12 @@
     width: 0;
     height: 100%;
     margin-left: -150px;
-    overflow-y: auto;
     background: #000;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    box-shadow: 5px 5px 10px #888888;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -140,4 +138,12 @@
     form{
         position: relative;
     }
+    
+    
+    .toggled{
+        background-color: blue;
+        overflow: auto;
+        color:white;
+    }
+
 }

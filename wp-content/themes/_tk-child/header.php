@@ -23,7 +23,11 @@
                       </a>
                   </li>
                   <li>
-                      <?php get_search_form(); ?>
+                      <form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+                        <div>
+                            <input type="text" value="search..." name="s" id="s" />
+                        </div>
+                    </form>
                   </li>
                     <?php wp_nav_menu(array(
                        'menu' => 'Main Menu', 
