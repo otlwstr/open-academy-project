@@ -17,9 +17,9 @@ get_header(); ?>
     
     <?php
     
-    $lessonspost = array( 'post_type' => 'lessons', );
+    $lessonspost = array( 'post_type' => 'lesson', );
     $loop = new WP_Query( $lessonspost );
-        print_r($loop);die();
+        //print_r($loop);die();
     
     ?>
     <?php while ( $loop->have_posts() ) : $loop->the_post();?>
