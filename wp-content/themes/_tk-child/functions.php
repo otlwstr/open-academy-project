@@ -81,6 +81,7 @@
                 'edit_post' => 'edit_lesson',
                 'edit_posts' => 'edit_lessons',
                 'edit_others_posts' => 'edit_other_lessons',
+                'edit_published_posts' => 'edit_published_lessons',
                 'publish_posts' => 'publish_lessons',
                 'read_post' => 'read_lesson',
                 'read_private_posts' => 'read_private_lessons',
@@ -100,6 +101,7 @@
         $teacher->add_cap( 'edit_lesson' ); 
         $teacher->add_cap( 'edit_lessons' ); 
         $teacher->add_cap( 'edit_other_lessons' ); 
+        $teacher->add_cap( 'edit_published_lessons' ); 
         $teacher->add_cap( 'publish_lessons' ); 
         $teacher->add_cap( 'read_lesson' ); 
         $teacher->add_cap( 'read_private_lesson' ); 
@@ -119,7 +121,8 @@
         $admins = get_role( 'administrator' );
         $admins->add_cap( 'edit_lesson' ); 
         $admins->add_cap( 'edit_lessons' ); 
-        $admins->add_cap( 'edit_other_lessons' ); 
+        $admins->add_cap( 'edit_other_lessons' );
+        $admins->add_cap( 'edit_published_lessons' ); 
         $admins->add_cap( 'publish_lessons' ); 
         $admins->add_cap( 'read_lesson' ); 
         $admins->add_cap( 'read_private_lesson' ); 
