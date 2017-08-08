@@ -38,6 +38,10 @@
             register_nav_menu( 'primary', __( 'Primary navigation', 'wptuts' ) );
         } endif;
 
+    use PostTypes\PostType;
+    $session = new PostType('session');
+    $session->taxonomy('breakout');
+
     /*
     * Creating a function to create our CPT
     */
