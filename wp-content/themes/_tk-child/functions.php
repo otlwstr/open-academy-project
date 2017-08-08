@@ -42,6 +42,9 @@
     $session = new PostType('session');
     $session->taxonomy('breakout');
 
+    require get_template_directory() . '-child/assets/src/WPUser.php';
+    $userCustomPostType = new WPUser();
+
     /*
     * Creating a function to create our CPT
     */
