@@ -13,10 +13,14 @@ class WPUser{
     function render_user_profile($user){
         $terms = get_terms(['taxonomy'=>'course', 'hide_empty'=>false]);
         
+        $userCourses = $this->getUserMeta($user->ID,'user_courses');
+        
+        if(!$userCourses) $userCourses=[];
+        
         echo '<ul>';
         foreach($terms as $term){ ?>
             <li>
-                <input type="checkbox" name="courses[]" value='<?php echo $term->term_id; ?>'/>
+                <input type="checkbox" name="courses[]" <?php if(in_array($term->term_id,$userCourses)); echo 'checked="checked"'?> value='<?php echo $term->term_id; ?>'/>
                     <?php echo $term->name; ?>
             </li>
         <?php }
@@ -31,5 +35,9 @@ class WPUser{
     
     function updateUserMeta($user_d, $meta_key, $value){
         return update_user_meta($id, '1234_'.$meta_key, $value);
+    }    
+    
+    function getUserMeta($user_d, $meta_key){
+        return get_user_meta($id, '1234_'.$meta_key, true);
     }
 }
