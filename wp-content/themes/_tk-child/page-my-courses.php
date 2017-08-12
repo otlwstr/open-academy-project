@@ -13,7 +13,7 @@
             ) );
             //print_r($terms);die();
         ?>
-    
+        <?php if (is_user_logged_in()) { echo WPUser.render_user_profile($user); die(); ?> 
         <ul>
             <?php foreach ($terms as $t){ ?>
                 <li> 
@@ -21,7 +21,7 @@
                 </li>
             <?php } ?>
         </ul>
-    
+        <?php } ?>
     </div>
     
 </div>
